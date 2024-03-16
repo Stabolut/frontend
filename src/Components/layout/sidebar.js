@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
 export default function Sidebar(props) {
   return (
@@ -12,7 +10,7 @@ export default function Sidebar(props) {
         <div className="iq-sidebar  sidebar-default ">
           <div className="iq-sidebar-logo d-flex align-items-center justify-content-center">
             <a href="index.html" className="header-logo">
-              <img src="./assets/img/logoPurple1.png" />
+              <img alt="loading..." src="./assets/img/logo.png" />
             </a>
             {/* <div className="iq-menu-bt-sidebar">
               <i class="las la-bars"></i>
@@ -22,28 +20,18 @@ export default function Sidebar(props) {
             <nav className="iq-sidebar-menu">
               <ul id="iq-sidebar-toggle" className="iq-menu">
                 <li className=" ">
-                  <Link to="/" className="">
+                  <li>
+                    <Link to="/purchase-with-eth" className="">
+                      <i class="lab la-ethereum iq-arrow-left"></i>
+                      <span>Purchase USB With ETH</span>
+                    </Link>
+                  </li>
+
+                  <Link to="/purchase-with-btc" className="">
                     <i class="lab la-btc iq-arrow-left"></i>
                     <span>Purchase USB With BTC</span>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/purchase-with-eth" className="">
-                    <i class="lab la-ethereum iq-arrow-left"></i>
-                    <span>Purchase USB With ETH</span>
-                  </Link>
-                </li>
-                {/* <li className=" ">
-                  <a onClick={() => {
-
-                    localStorage.removeItem("jwtToken")
-                    localStorage.removeItem("showAlertBtc")
-
-                  }} href="/login">
-                    <i class="las la-sign-out-alt iq-arrow-left"></i>
-                    <span>Logout</span>
-                  </a>
-                </li> */}
               </ul>
             </nav>
             <div className="p-3" />
@@ -54,20 +42,22 @@ export default function Sidebar(props) {
           <Container>
             <Navbar.Brand href="#home">
               <img
-                src="./assets/img/logoPurple1.png"
+                alt="loading..."
+                src="./assets/img/logo.png"
                 style={{ maxWidth: "120px" }}
               />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Link to="/" className="">
-                  <i class="lab la-btc mr-2"></i>
-                  <span>Purchase USB With BTC</span>
-                </Link>
                 <Link to="/purchase-with-eth" className="">
                   <i class="lab la-ethereum mr-2"></i>
                   <span>Purchase USB With ETH</span>
+                </Link>
+
+                <Link to="/purchase-with-btc" className="">
+                  <i class="lab la-btc mr-2"></i>
+                  <span>Purchase USB With BTC</span>
                 </Link>
               </Nav>
             </Navbar.Collapse>
