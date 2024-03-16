@@ -10,21 +10,22 @@ To run the project locally, follow these steps:
 
 1.   Clone the repository:
 
-         git clone https://github.com/Stabolut/frontend/
+         git clone https://github.com/Stabolut/frontend.git
+     
 
-2.   Navigate to the project directory:
+3.   Navigate to the project directory:
 
          cd frontend
 
-3.   Install dependencies:
+4.   Install dependencies:
 
          npm install
    
-4.   Start the server:
+5.   Start the server:
 
          npm run start
 
-5.   Access the admin panel via your web browser:
+6.   Access the admin panel via your web browser:
 
          http://localhost:3000/
 
