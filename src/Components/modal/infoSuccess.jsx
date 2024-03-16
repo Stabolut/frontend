@@ -1,7 +1,8 @@
-// import { Modal } from "bootstrap";
 import React from 'react';
 import Modal from 'react-bootstrap/Modal'
-import CheckCircle from '@material-ui/icons/CheckCircle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/fontawesome-free-solid';
+
 
 export default class InfoSuccess extends React.Component {
 
@@ -15,7 +16,7 @@ export default class InfoSuccess extends React.Component {
             >
                 <Modal.Header>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        <CheckCircle />
+                    <FontAwesomeIcon icon={faCheckCircle} />
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{
