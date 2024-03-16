@@ -1,4 +1,4 @@
-import "./NoFound.css";
+import "./noFound.css";
 import { React, Component } from "react";
 
 class NoFound extends Component {

@@ -1,7 +1,7 @@
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom"; // Importing routing components from react-router-dom
 import PurchaseWithEth from "./pages/purchase/purchaseWithEth"; // Importing component for purchasing with Ethereum
 import PurchaseWithBtc from "./pages/purchase/purchaseWithBtc"; // Importing component for purchasing with Bitcoin
-import NoFound from "./pages/NoPageFound/NoFound";
+import NoFound from "./pages/noPageFound/noFound";
 
 function App() {
   // Render the application routes using BrowserRouter, Switch, and Route components
