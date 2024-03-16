@@ -1,8 +1,7 @@
 // import { Modal } from "bootstrap";
 import React from 'react';
 import Modal from 'react-bootstrap/Modal'
-import ErrorOutline from '@material-ui/icons/ErrorOutline';
-import CheckCircle from '@material-ui/icons/CheckCircle';
+
 class WarningModal extends React.Component {
 
 

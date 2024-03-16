@@ -1,46 +1,31 @@
+import invoke from "../../uitls/invoke"; // Importing utility function for making HTTP requests
+import { config } from "../../config/config"; // Importing configuration data
 
-import invoke from '../../uitls/invoke';
-import { config } from '../../config/config';
+// Function to make a purchase with Bitcoin
+export const purchaseWithBtc = (data) => {
+  return invoke({
+    method: "POST",
+    baseURL: config.baseuUrl, // Base URL for API requests
+    route: "purchase-usb", // Route for purchasing USB tokens with Bitcoin
+    data: data, // Data object containing purchase details
+  });
+};
 
+// Function to make a purchase with Ethereum
+export const purchaseWihtEth = (data) => {
+  return invoke({
+    method: "POST",
+    baseURL: config.baseuUrl, // Base URL for API requests
+    route: "purchase-eth", // Route for purchasing USB tokens with Ethereum
+    data: data, // Data object containing purchase details
+  });
+};
 
-export const purchase = (data) => {
-
-    return invoke({
-        method: 'POST',
-        baseURL: config.baseuUrl,
-        route: 'purchase-usb',
-        data: data,
-        // headers: {
-        //     Authorization: localStorage.getItem('jwtToken')
-        // }
-    });
-}
-
-
-
-export const purchaseEth = (data) => {
-
-    return invoke({
-        method: 'POST',
-        baseURL: config.baseuUrl,
-        route: 'purchase-eth',
-        data: data,
-        // headers: {
-        //     Authorization: localStorage.getItem('jwtToken')
-        // }
-    });
-}
-
-
+// Function to get admin deposit address based on cryptocurrency type
 export const getAdminDepositAddress = (data) => {
-
-    return invoke({
-        method: 'GET',
-        baseURL: config.baseuUrl,
-        route: `get-admin-deposit-address?type=${data}`,
-        // headers: {
-        //     Authorization: localStorage.getItem('jwtToken')
-        // }
-
-    });
-}
+  return invoke({
+    method: "GET",
+    baseURL: config.baseuUrl, // Base URL for API requests
+    route: `get-admin-deposit-address?type=${data}`, // Route for getting admin deposit address
+  });
+};
