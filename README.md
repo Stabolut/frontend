@@ -37,8 +37,11 @@ To run the project locally, follow these steps:
 
 ## Additional Information
 
-  1. **Technology Stack:** This project is built using HTML, CSS, JavaScript,react.js and Node.js.
+1. **Technology Stack:** This project is built using HTML, CSS, JavaScript, React.js, and Node.js.
   2. **Dependencies:** Make sure to have Node.js and npm installed on your system to run the project.
+  3. **Testnet Usage:** Please note that both Ethereum and Bitcoin transactions should be conducted on their respective testnets to avoid using real funds.
+  4. **Deposit Addresses:** The deposit addresses provided for Ethereum and Bitcoin transactions are owned by our company.
+
 
 
    
