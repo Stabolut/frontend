@@ -15,6 +15,8 @@ import { config } from "../../config/config";
 import WarningModal from "../../components/modal/warningModal";
 import ConfirmationModal from "../../components/modal/ConfirmationModal";
 import LoadingOverlay from "../../components/Loader";
+import { ErrorMessage } from "../../messages/errorMessage";
+import { InfoMessage } from "../../messages/infoMessages";
 
 class PurchaseWithEth extends Component {
   state = {
@@ -108,21 +110,10 @@ class PurchaseWithEth extends Component {
 
       let msg, title;
       if (data.data === true) {
-        msg = `
-        <p style="font-size: 14px; padding-left: 16px; padding-right: 16px; text-align: left;">You are about to purchase USB Coin to the following address:
-        <b style="font-size: 18px;">${this.state.usbAddress}</b>, with the amount of <b style="font-size: 18px;">${this.state.amount} ETH</b>
-        Please ensure that this is the correct information before proceeding.</p>
-      `;
+          msg = InfoMessage.userWalletFoundInfo(this.state.usbAddress, this.state.amount, "ETH");
         title = "Purchase Confirmation";
       } else {
-        msg = `
-        <p style="font-size: 14px; padding-left: 16px; padding-right: 16px; text-align: left;">
-        The provided wallet address is not registered in our records. We suggest you create a wallet on the USB app before proceeding with the deposit. In case you haven't created a wallet yet, please do so on the USB app. Otherwise, your tokens will be sent to the address you provided, which is not in our records.
-        </p>
-        <p style="font-size: 14px; padding-left: 16px; padding-right: 16px; text-align: left;">
-          If you still wish to continue, here is the information you requested: You want to purchase USB tokens to the address <b style="font-size: 18px;">${this.state.usbAddress}</b> with an amount of <b style="font-size: 18px;">${this.state.amount} ETH</b>. Ensure that this address belongs to you and is the intended recipient before proceeding with the transaction.
-        </p>
-        `;
+        msg =   msg = InfoMessage.UserWalletNotFoundInfotMessage(this.state.usbAddress,this.state.amount, "ETH");
         title = "Wallet Not Found";
       }
 
@@ -177,6 +168,8 @@ class PurchaseWithEth extends Component {
             disable: false,
             successModalVisible: true,
             modalMessage: data.message,
+            usbAddress: "",
+            amount: 0
           });
         }
         // if user not connected to the right network of Metamask
@@ -202,18 +195,19 @@ class PurchaseWithEth extends Component {
             disable: false,
             successModalVisible: true,
             modalMessage: data.message,
+            usbAddress: "",
+            amount: 0
           });
         }
       } else {
         this.setState({
           isLoading: false,
           disable: false,
-          modalMessage: "MetaMask is required for token purchase. Kindly install MetaMask to proceed.",
+          modalMessage: ErrorMessage.metamaskNotInstalled,
           errorModalVisible: true,
         });
       }
     } catch (e) {
-      console.log("eeee", e)
 
       let errorMessage = e?.message ? e.message : errorMessageHandler(e);
 
@@ -283,6 +277,7 @@ class PurchaseWithEth extends Component {
                             type="number"
                             className="form-control"
                             autoFocus={true}
+                            value={this.state.amount}
                             name="amount"
                             onChange={this.onChange}
                             placeholder="amount"
@@ -299,6 +294,7 @@ class PurchaseWithEth extends Component {
                             className="form-control"
                             onChange={this.onChange}
                             name="usbAddress"
+                            value={this.state.usbAddress}
                             placeholder="address"
                           />
                         </div>

@@ -15,6 +15,8 @@ import { config } from "../../config/config";
 import WarningModal from "../../components/modal/warningModal";
 import ConfirmationModal from "../../components/modal/ConfirmationModal";
 import LoadingOverlay from "../../components/Loader";
+import { ErrorMessage } from "../../messages/errorMessage";
+import { InfoMessage } from "../../messages/infoMessages";
 
 
 
@@ -114,21 +116,11 @@ class PurchaseWithBtc extends Component {
 
       let msg, title;
       if (data.data === true) {
-        msg = `
-      <p style="font-size: 14px; padding-left: 16px; padding-right: 16px; text-align: left;">You are about to purchase USB Coin to the following address:
-      <b style="font-size: 18px;">${this.state.usbAddress}</b>, with the amount of <b style="font-size: 18px;">${this.state.amount} BTC</b>
-      Please ensure that this is the correct information before proceeding.</p>
-    `;
+        msg = InfoMessage.userWalletFoundInfo(this.state.usbAddress, this.state.amount, "BTC");
+          console.log("Meess",msg)
         title = "Purchase Confirmation";
       } else {
-        msg = `
-      <p style="font-size: 14px; padding-left: 16px; padding-right: 16px; text-align: left;">
-      The provided wallet address is not registered in our records. We suggest you create a wallet on the USB app before proceeding with the deposit. In case you haven't created a wallet yet, please do so on the USB app. Otherwise, your tokens will be sent to the address you provided, which is not in our records.
-      </p>
-      <p style="font-size: 14px; padding-left: 16px; padding-right: 16px; text-align: left;">
-        If you still wish to continue, here is the information you requested: You want to purchase USB tokens to the address <b style="font-size: 18px;">${this.state.usbAddress}</b> with an amount of <b style="font-size: 18px;">${this.state.amount} BTC</b>. Ensure that this address belongs to you and is the intended recipient before proceeding with the transaction.
-      </p>
-      `;
+        msg = InfoMessage.UserWalletNotFoundInfotMessage(this.state.usbAddress,this.state.amount, "BTC");
         title = "Wallet Not Found";
       }
 
@@ -139,6 +131,7 @@ class PurchaseWithBtc extends Component {
         confirmationModalVisible: true,
         modalMessage: msg,
         modalTitle: title,
+       
       });
     } catch (err) {
       // Handle error
@@ -149,16 +142,14 @@ class PurchaseWithBtc extends Component {
   };
 
 
-// Function to handle purchase of coins
+  // Function to handle purchase of coins
   purchaseCoin = async (e) => {
-    
+
 
     try {
 
 
       this.setState({ isLoading: true, disable: true });
-
-
 
       if (typeof window.unisat !== 'undefined') {
 
@@ -173,7 +164,6 @@ class PurchaseWithBtc extends Component {
         if (networkId.toString() === config.btcNetwork) {
 
           let hash = await this.makeTransaction(unisat, accounts);
-          console.log("My transaction", hash)
 
           let dataObject = {
             hash: hash,
@@ -187,6 +177,8 @@ class PurchaseWithBtc extends Component {
             disable: false,
             successModalVisible: true,
             modalMessage: data.message,
+            usbAddress: "",
+            amount: 0
           });
 
         }
@@ -206,29 +198,28 @@ class PurchaseWithBtc extends Component {
             disable: false,
             successModalVisible: true,
             modalMessage: data.message,
+            usbAddress: "",
+            amount: 0
           });
 
 
         }
-
-
-
       }
       else {
 
         this.setState({
           isLoading: false,
           disable: false,
-          modalMessage: "Unisat is required for token purchase. Kindly install Unisat to proceed.",
+          modalMessage: ErrorMessage.unisatNotInstalled,
           errorModalVisible: true,
         });
 
       }
 
     } catch (e) {
-      console.log("Error reached", errorMessageHandler(e))
+
       let errorMessage = e?.message ? e.message : errorMessageHandler(e);
-      console.log("errorMessage", errorMessage)
+
       this.setState({
         isLoading: false,
         disable: false,

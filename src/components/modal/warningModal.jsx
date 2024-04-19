@@ -30,7 +30,7 @@ class WarningModal extends React.Component {
                     backgroundColor: "#fff"
                 }}>
                     <h4>{this.props.title}</h4>
-                    <p>{this.props.message}</p>
+                    <p dangerouslySetInnerHTML={{ __html: this.props.message }} />
                     <button type="button" class="btn btn-secondary Cancel" onClick={this.props.onClose}>Close</button>
                 </Modal.Body>
             </Modal >
