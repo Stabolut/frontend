@@ -1290,3 +1290,34 @@ input.input100 {
     padding-bottom: 10px;
   }
 }
+
+
+.ErrorAlert .modal-header {
+  background-color: #ec5353;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.ErrorAlert .modal-header svg {
+  font-size: 60px;
+  color: #fff;
+}
+
+.ErrorAlert h4 {
+  color: #3d445b;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.ErrorAlert p {
+  color: #3d445b;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ErrorAlert button.Cancel {
+  background-color: #ec5353;
+  color: #fff;
+  border: none;
+}

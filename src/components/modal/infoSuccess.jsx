@@ -21,8 +21,8 @@ export default class InfoSuccess extends React.Component {
                 </Modal.Header>
                 <Modal.Body style={{
                     wordWrap: 'break-word',
-                    paddingLeft: '2px',
-                    paddingRight: '2px',
+                    paddingLeft: '8px',
+                    paddingRight: '8px',
                     backgroundImage: 'none',
                     backgroundColor: "#fff"
                 }}>
