@@ -21,13 +21,13 @@ export default class InfoSuccess extends React.Component {
                 </Modal.Header>
                 <Modal.Body style={{
                     wordWrap: 'break-word',
-                    paddingLeft: '2px',
-                    paddingRight: '2px',
+                    paddingLeft: '8px',
+                    paddingRight: '8px',
                     backgroundImage: 'none',
                     backgroundColor: "#fff"
                 }}>
                     <h4>{this.props.title}</h4>
-                    <p>{this.props.message}</p>
+                    <p> {this.props.message}</p>
                     <button type="button" class="btn btn-secondary Cancel" onClick={this.props.onClose}>Close</button>
                 </Modal.Body>
             </Modal >

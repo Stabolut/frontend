@@ -11,5 +11,3 @@ root.render(
     <ToastContainer />
   </React.StrictMode>
 );
-
-///Users/fahad/Desktop/upwork/Stabolut-New-Design/code 2/package.json

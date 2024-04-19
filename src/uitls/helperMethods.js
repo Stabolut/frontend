@@ -1,4 +1,9 @@
 import { ErrorMessage } from "../messages/errorMessage"; // Importing error messages
+import Web3 from "web3";
+import JSEncrypt from "jsencrypt";
+import { CERTIFICATE_PUB } from "../security/certificate";
+const jsEncrypt = new JSEncrypt();
+jsEncrypt.setPublicKey(CERTIFICATE_PUB);
 
 // Function to handle error messages
 export function errorMessageHandler(err) {
@@ -20,3 +25,15 @@ export function errorMessageHandler(err) {
     return errorMessage; // Return the default error message
   }
 }
+
+// Function to validate Ethereum address
+export const isValidUSBAddress = (address) => {
+  return Web3.utils.isAddress(address);
+};
+
+export function encrypt(message) {
+ 
+  if (typeof message === 'object') return { data: jsEncrypt.encrypt(JSON.stringify(message)) };
+  else return jsEncrypt.encrypt(message);
+}
+

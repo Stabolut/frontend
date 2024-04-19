@@ -5,23 +5,36 @@ import InfoSuccess from "../../components/modal/infoSuccess"; // Importing InfoS
 import {
   getAdminDepositAddress,
   purchaseWithBtc,
+  checkUserWalletExistence
 } from "../../api/purchase/purchase"; // Importing API functions for Bitcoin purchase
-import { errorMessageHandler } from "../../uitls/helperMethods"; // Importing function for handling error messages
+import { errorMessageHandler, isValidUSBAddress } from "../../uitls/helperMethods"; // Importing function for handling error messages
 import { WarningMessageAlert } from "../../uitls/alert"; // Importing custom WarningMessageAlert component
 import DepositAddress from "../../components/depositAddress";
 
+import { config } from "../../config/config";
+import WarningModal from "../../components/modal/warningModal";
+import ConfirmationModal from "../../components/modal/ConfirmationModal";
+import LoadingOverlay from "../../components/Loader";
+import { ErrorMessage } from "../../messages/errorMessage";
+import { InfoMessage } from "../../messages/infoMessages";
+
+
+
 class PurchaseWithBtc extends Component {
   state = {
-    usbAddress: "",
-    hash: "",
-    isError: false,
-    message: "",
-    isLoading: false,
-    disable: false,
-    visible: false,
-    isDepositAddressLoading: false,
-    depositAddress: "",
-    visibleAelrt: false, // Typo in variable name, should be "visibleAlert"
+    usbAddress: "", // State variable for USB address
+    amount: 0, // State variable for btc amount
+    isDepositAddressLoading: false, // State variable to indicate loading state for deposit address
+    depositAddress: "", // State variable to store admin deposit address
+    isError: false, // State variable to indicate if there is an error
+    message: "", // State variable for error/success message
+    isLoading: false, // State variable to indicate loading state
+    disable: false, // State variable to disable certain UI elements
+    errorModalVisible: false, // State variable to control visibility of modal
+    successModalVisible: false,
+    confirmationModalVisible: false,
+    modalMessage: "",
+    modalTitle: ""
   };
 
   // Lifecycle method to fetch admin deposit address for Bitcoin
@@ -53,14 +66,15 @@ class PurchaseWithBtc extends Component {
       [e.target.name]: e.target.value,
     });
   };
-
   // Function to validate input fields
   validateInput = () => {
-    if (this.state.hash === "" || this.state.hash === null) {
-      // If BTC hash is not provided
-      this.setState({ isError: true, message: "BTC hash is required!" });
+    const { amount, usbAddress } = this.state;
+
+    if (!amount || amount === "" || parseFloat(amount) <= 0) {
+      // If amount is not provided, is an empty string, or is not greater than 0
+      this.setState({ isError: true, message: "Amount must be a valid number greater than 0!" });
       return false;
-    } else if (this.state.usbAddress === "" || this.state.usbAddress === null) {
+    } else if (!usbAddress) {
       // If USB Address is not provided
       this.setState({
         isError: true,
@@ -68,24 +82,28 @@ class PurchaseWithBtc extends Component {
       });
       return false;
     }
+
+    if (!isValidUSBAddress(usbAddress)) {
+      this.setState({ isError: true, message: "Invalid USB address. Please provide a valid USB address." });
+      return false;
+    }
+
     return true; // Input is valid
   };
 
-  // Function to handle purchase of coins
-  purchaseCoin = async (e) => {
-    // Validate input fields
-    if (!this.validateInput()) {
-      return;
-    }
 
-    const { hash, usbAddress } = this.state;
-    let dataObject = {
-      hash: hash,
-      usbAddress: usbAddress,
-    };
 
+  verifyUserAddress = async () => {
     try {
-      // Set loading and disable states
+      // Validate input fields
+      if (!this.validateInput()) {
+        return;
+      }
+
+      // Prepare data object
+      let dataObject = { usbAddress: this.state.usbAddress };
+
+      // Set loading state
       this.setState({
         isError: false,
         message: null,
@@ -93,24 +111,137 @@ class PurchaseWithBtc extends Component {
         disable: true,
       });
 
-      // Make API call to purchase with Bitcoin
-      const { data } = await purchaseWithBtc(dataObject);
+      // Make API call to validate address
+      let { data } = await checkUserWalletExistence(dataObject);
 
-      // Update state after successful purchase
+      let msg, title;
+      if (data.data === true) {
+        msg = InfoMessage.userWalletFoundInfo(this.state.usbAddress, this.state.amount, "BTC");
+          console.log("Meess",msg)
+        title = "Purchase Confirmation";
+      } else {
+        msg = InfoMessage.UserWalletNotFoundInfotMessage(this.state.usbAddress,this.state.amount, "BTC");
+        title = "Wallet Not Found";
+      }
+
+      // Update state after successful result
       this.setState({
-        isError: false,
         isLoading: false,
         disable: false,
-        visible: true,
-        modalMessage: data.message,
+        confirmationModalVisible: true,
+        modalMessage: msg,
+        modalTitle: title,
+       
       });
     } catch (err) {
       // Handle error
       this.setState({ isError: true, disable: false, isLoading: false });
-
-      // Display error message
-      this.setState({ message: errorMessageHandler(err) });
+      let errorMessage = errorMessageHandler(err);
+      this.setState({ message: errorMessage });
     }
+  };
+
+
+  // Function to handle purchase of coins
+  purchaseCoin = async (e) => {
+
+
+    try {
+
+
+      this.setState({ isLoading: true, disable: true });
+
+      if (typeof window.unisat !== 'undefined') {
+
+        const unisat = (window).unisat;
+        // get the active account
+        let accounts = await unisat.requestAccounts();
+        //check network
+        let networkId = await unisat.getNetwork();
+
+
+        // We are on expecting network
+        if (networkId.toString() === config.btcNetwork) {
+
+          let hash = await this.makeTransaction(unisat, accounts);
+
+          let dataObject = {
+            hash: hash,
+            usbAddress: this.state.usbAddress,
+            amount: this.state.amount,
+          };
+          const { data } = await purchaseWithBtc(dataObject);
+
+          this.setState({
+            isLoading: false,
+            disable: false,
+            successModalVisible: true,
+            modalMessage: data.message,
+            usbAddress: "",
+            amount: 0
+          });
+
+        }
+        // We need to switch the network
+        else {
+          await unisat.switchNetwork(config.btcNetwork);
+          let hash = await this.makeTransaction(unisat, accounts);
+          let dataObject = {
+            hash: hash,
+            usbAddress: this.state.usbAddress,
+            amount: this.state.amount,
+          };
+          const { data } = await purchaseWithBtc(dataObject);
+
+          this.setState({
+            isLoading: false,
+            disable: false,
+            successModalVisible: true,
+            modalMessage: data.message,
+            usbAddress: "",
+            amount: 0
+          });
+
+
+        }
+      }
+      else {
+
+        this.setState({
+          isLoading: false,
+          disable: false,
+          modalMessage: ErrorMessage.unisatNotInstalled,
+          errorModalVisible: true,
+        });
+
+      }
+
+    } catch (e) {
+
+      let errorMessage = e?.message ? e.message : errorMessageHandler(e);
+
+      this.setState({
+        isLoading: false,
+        disable: false,
+        errorModalVisible: true,
+        modalMessage: errorMessage,
+      });
+    }
+  };
+
+  makeTransaction = async (unisat, acc) => {
+
+
+    let balance = await unisat.getBalance();
+    console.log("balance", balance, balance.total / 1e8)
+
+
+    if (parseFloat(this.state.amount) >= parseFloat(balance.total / 1e8)) {
+      throw { message: "Balance Insufficient: Your account does not have enough funds to complete the transaction." }
+
+    }
+    let txid = await unisat.sendBitcoin(this.state.depositAddress, parseFloat(this.state.amount) * 1e8);
+    return txid;
   };
 
   render() {
@@ -118,14 +249,11 @@ class PurchaseWithBtc extends Component {
       <>
         <Sidebar history={this.props.history} />
 
-        <InfoSuccess
-          visible={this.state.visible}
-          title={"Congratulations !"}
-          message={this.state.modalMessage}
-          onClose={() => {
-            this.setState({ visible: false });
-          }}
-        />
+        {this.state.isLoading && (
+          <LoadingOverlay>
+
+          </LoadingOverlay>
+        )}
 
         <div className="content-page">
           <div className="container-fluid">
@@ -144,14 +272,14 @@ class PurchaseWithBtc extends Component {
                     <div className="row">
                       <div className="col-md-8">
                         <div className="form-group">
-                          <label>Enter BTC hash: *</label>
+                          <label>Please enter the desired amount of btc for purchase: *</label>
                           <input
-                            type="text"
+                            type="number"
                             className="form-control"
                             autoFocus={true}
-                            name="hash"
+                            name="amount"
                             onChange={this.onChange}
-                            placeholder="Hash"
+                            placeholder="amount"
                           />
                         </div>
                       </div>
@@ -165,7 +293,7 @@ class PurchaseWithBtc extends Component {
                             className="form-control"
                             onChange={this.onChange}
                             name="usbAddress"
-                            placeholder="Address"
+                            placeholder="address"
                           />
                         </div>
                       </div>
@@ -178,19 +306,11 @@ class PurchaseWithBtc extends Component {
 
                     <div>
                       <button
-                        onClick={this.purchaseCoin}
+                        onClick={this.verifyUserAddress}
                         disabled={this.state.disable}
                         className="btn btn-light-gradiant my-4"
-                      >
-                        {this.state.isLoading === true ? (
-                          <img
-                            alt="loading..."
-                            style={{ height: "30px", width: "30px" }}
-                            src="/assets/img/spinner.gif"
-                          ></img>
-                        ) : (
-                          "Purchase Now"
-                        )}
+                      >Purchase Now
+
                       </button>
                     </div>
                     <hr />
@@ -200,6 +320,36 @@ class PurchaseWithBtc extends Component {
             </div>
           </div>
         </div>
+
+        <InfoSuccess
+          visible={this.state.successModalVisible}
+          title={"Congratulations !"}
+          message={this.state.modalMessage}
+          onClose={() => {
+            this.setState({ successModalVisible: false });
+          }}
+        />
+        <WarningModal
+          visible={this.state.errorModalVisible}
+          message={this.state.modalMessage}
+          onClose={() => {
+            this.setState({ errorModalVisible: false });
+          }}
+        />
+
+        <ConfirmationModal
+          visible={this.state.confirmationModalVisible}
+          title={this.state.modalTitle}
+          message={this.state.modalMessage}
+          onClose={(value) => {
+            this.setState({ confirmationModalVisible: false });
+            if (value) {
+              this.purchaseCoin();
+            } else {
+
+            }
+          }}
+        />
       </>
     );
   }
