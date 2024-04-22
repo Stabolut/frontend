@@ -18,6 +18,9 @@ export function errorMessageHandler(err) {
     } else if (err?.response?.data) {
       errorMessage = err?.response?.data?.errors[0]?.message;
     }
+    else if (err.message) {
+      errorMessage = err.message
+    }
 
     return errorMessage; // Return the error message
   } catch (e) {
@@ -32,7 +35,7 @@ export const isValidUSBAddress = (address) => {
 };
 
 export function encrypt(message) {
- 
+
   if (typeof message === 'object') return { data: jsEncrypt.encrypt(JSON.stringify(message)) };
   else return jsEncrypt.encrypt(message);
 }

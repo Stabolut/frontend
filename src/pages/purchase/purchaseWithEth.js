@@ -209,13 +209,13 @@ class PurchaseWithEth extends Component {
       }
     } catch (e) {
 
-      let errorMessage = e?.message ? e.message : errorMessageHandler(e);
+     
 
       this.setState({
         isLoading: false,
         disable: false,
         errorModalVisible: true,
-        modalMessage: errorMessage,
+        modalMessage: errorMessageHandler(e),
       });
 
     }

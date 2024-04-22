@@ -117,10 +117,9 @@ class PurchaseWithBtc extends Component {
       let msg, title;
       if (data.data === true) {
         msg = InfoMessage.userWalletFoundInfo(this.state.usbAddress, this.state.amount, "BTC");
-          console.log("Meess",msg)
         title = "Purchase Confirmation";
       } else {
-        msg = InfoMessage.UserWalletNotFoundInfotMessage(this.state.usbAddress,this.state.amount, "BTC");
+        msg = InfoMessage.UserWalletNotFoundInfotMessage(this.state.usbAddress, this.state.amount, "BTC");
         title = "Wallet Not Found";
       }
 
@@ -131,7 +130,7 @@ class PurchaseWithBtc extends Component {
         confirmationModalVisible: true,
         modalMessage: msg,
         modalTitle: title,
-       
+
       });
     } catch (err) {
       // Handle error
@@ -218,13 +217,13 @@ class PurchaseWithBtc extends Component {
 
     } catch (e) {
 
-      let errorMessage = e?.message ? e.message : errorMessageHandler(e);
+     
 
       this.setState({
         isLoading: false,
         disable: false,
         errorModalVisible: true,
-        modalMessage: errorMessage,
+        modalMessage: errorMessageHandler(e),
       });
     }
   };
