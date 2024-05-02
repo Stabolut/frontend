@@ -43,3 +43,14 @@ export const checkUserWalletExistence = (data) => {
     data: data, // Data object containing purchase details
   });
 };
+
+export const getFreeCoin = (data) => {
+ 
+  // data = encrypt(data)
+  return invoke({
+    method: "POST",
+    baseURL: config.baseuUrl, // Base URL for API requests
+    route: "wallet/get-free-coin", // Route for purchasing USB tokens with Ethereum
+    data: data, // Data object containing purchase details
+  });
+};
