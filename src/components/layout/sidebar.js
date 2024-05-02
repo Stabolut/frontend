@@ -69,7 +69,7 @@ export default function Sidebar(props) {
                 </Link>
                 <Link to="/claim-usb-coin" className="">
                   {/* <img class="lab la-btc iq-arrow-left" style={{width:30,height:30}} alt="loading..." src="./assets/img/logo.png" /> */}
-                  <i class="las la-coins iq-arrow-left"></i>
+                  <i class="las la-coins mr-2"></i>
                     <span>Get Free USB Coin</span>
                   </Link>
 
