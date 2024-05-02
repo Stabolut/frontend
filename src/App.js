@@ -15,7 +15,7 @@ function App() {
         <Route path="/purchase-with-eth" element={<PurchaseWithEth />} />
         {/* Route for purchasing with Bitcoin */}
         <Route path="/purchase-with-btc" element={<PurchaseWithBtc />} />
-        <Route path="/free-usb-coin" element={<GetFreeUSB />} />
+        <Route path="/claim-usb-coin" element={<GetFreeUSB />} />
         {/* Route for handling 404 */}
         <Route path="*" element={<NoFound />} />
       </Routes>

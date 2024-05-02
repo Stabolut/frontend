@@ -32,7 +32,7 @@ export default function Sidebar(props) {
                     <span>Purchase USB With BTC</span>
                   </Link>
 
-                  <Link to="/free-usb-coin" className="">
+                  <Link to="/claim-usb-coin" className="">
                   {/* <img class="lab la-btc iq-arrow-left" style={{width:30,height:30}} alt="loading..." src="./assets/img/logo.png" /> */}
                   <i class="las la-coins iq-arrow-left"></i>
                     <span>Get Free USB Coin</span>
@@ -67,7 +67,7 @@ export default function Sidebar(props) {
                   <i class="lab la-btc mr-2"></i>
                   <span>Purchase USB With BTC</span>
                 </Link>
-                <Link to="/free-usb-coin" className="">
+                <Link to="/claim-usb-coin" className="">
                   {/* <img class="lab la-btc iq-arrow-left" style={{width:30,height:30}} alt="loading..." src="./assets/img/logo.png" /> */}
                   <i class="las la-coins iq-arrow-left"></i>
                     <span>Get Free USB Coin</span>
