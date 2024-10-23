@@ -5,6 +5,14 @@
 :root {
   --primaryColor: #763f98;
   --secondaryColor: #0c0c0c;
+  --textGray: #6f6f6f;
+  --lightGray: #a09d9d;
+  --white: #fff;
+  --gradientStart: #b546f9;
+  --gradientEnd: #7f40a6;
+  --errorRed: #ec5353;
+  --successGreen: #22ae6f;
+  --darkBg: #181818;
 }
 body {
   /* font-family: 'Asap', sans-serif !important; */
@@ -13,7 +21,7 @@ body {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  font-size: 17px;
+  font-size: clamp(16px, 1.1vw, 17px);
   color: #6f6f6f;
   font-weight: 400;
   line-height: 24px;
@@ -45,41 +53,45 @@ body {
   max-width: 110px;
 }
 .main-heading {
-  font-size: 2.5rem !important;
+  font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
 }
 .font-16 {
-  font-size: 16px !important;
+  font-size: clamp(14px, 1vw, 16px) !important;
 }
 .custom-header .navbar-nav .nav-link {
   color: #a09d9d;
-  font-size: 16px;
+  font-size: clamp(14px, 1vw, 16px);
   font-weight: 500;
   padding: 10px 30px;
 }
 .custom-header .navbar-nav .nav-link.active {
   color: #6c6c6c;
-  font-size: 16px;
+  font-size: clamp(14px, 1vw, 16px);
   font-weight: 600;
 }
 
 .custom-header .navbar-nav .nav-item a {
   color: #a09d9d;
-  font-size: 18px;
+  font-size: clamp(16px, 1.2vw, 18px);
   font-weight: 500;
   padding: 10px 30px;
 }
 .custom-header .navbar-nav .nav-item.active a {
   color: #6c6c6c;
-  font-size: 18px;
+  font-size: clamp(16px, 1.2vw, 18px);
   font-weight: 600;
 }
 .btn-dark-gradiant {
-  background-image: linear-gradient(to right, #b546f9, #7f40a6);
+  background-image: linear-gradient(
+    to right,
+    var(--gradientStart),
+    var(--gradientEnd)
+  );
   border-radius: 100px !important;
   border: none !important;
-  color: #fff !important;
+  color: var(--white) !important;
   padding: 8px 25px !important;
-  box-shadow: #b546f9 1px 1px 7px 0px;
+  box-shadow: var(--gradientStart) 1px 1px 7px 0px;
 }
 .btn-light-gradiant {
   background-color: #fff !important;
@@ -93,7 +105,7 @@ body {
 }
 .content-76-btn {
   color: #a1a0a2;
-  font-size: 18px;
+  font-size: clamp(16px, 1.2vw, 18px);
   text-decoration: underline;
   font-weight: 300;
   margin-left: 10px;
@@ -115,7 +127,7 @@ section.SliderBanner .content {
 }
 section.SliderBanner .content h4 {
   color: var(--primaryColor);
-  font-size: 24px;
+  font-size: clamp(20px, 1.5vw, 24px);
   font-weight: 700;
 }
 section.SliderBanner .content h1 {
@@ -144,23 +156,23 @@ section.SliderBanner .content h1 {
     font-size: 16px;
     font-weight: 400; */
   color: #fff;
-  font-size: 22px;
+  font-size: clamp(18px, 1.4vw, 22px);
   font-weight: 600;
 }
 .ziza-template-content-1-boxes.itemOne p {
   color: #fff;
-  font-size: 16px;
+  font-size: clamp(14px, 1vw, 16px);
   font-weight: 400;
   line-height: 28px;
 }
 .ziza-template-content-1-boxes h5 {
   color: #303030;
-  font-size: 22px;
+  font-size: clamp(18px, 1.4vw, 22px);
   font-weight: 600;
 }
 .ziza-template-content-1-boxes p {
   color: #6e6e6e;
-  font-size: 14px;
+  font-size: clamp(12px, 0.9vw, 14px);
   font-weight: 400;
 }
 .ziza-template-content-1-boxes .Image img {
@@ -192,13 +204,13 @@ section.EveryThingYouNeed {
 
 section.EveryThingYouNeed .text h2 {
   color: var(--secondaryColor);
-  font-size: 52px;
+  font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 600;
 }
 section.EveryThingYouNeed .text p {
   color: #6e6e6e;
   /* font-size: 28px; */
-  font-size: 1.3125rem;
+  font-size: clamp(16px, 1.3vw, 1.3125rem);
   font-weight: 400;
   line-height: 28px;
 }
@@ -224,7 +236,7 @@ section.EveryThingYouNeed .text p {
 .PrimeMember p {
   color: #fff;
   margin-bottom: 25px;
-  font-size: 1.3125rem;
+  font-size: clamp(16px, 1.3vw, 1.3125rem);
   font-weight: 300;
   line-height: 28px;
 }
@@ -239,14 +251,14 @@ section.EveryThingYouNeed .text p {
 }
 .aboutUs h2 {
   color: var(--secondaryColor);
-  font-size: 52px;
+  font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 600;
   margin-bottom: 30px;
 }
 
 .aboutUs p {
   color: #6e6e6e;
-  font-size: 1.3125rem;
+  font-size: clamp(16px, 1.3vw, 1.3125rem);
   font-weight: 300;
   line-height: 28px;
 }
@@ -255,7 +267,7 @@ section.ReadMore {
   padding: 50px 0px;
 }
 section.ReadMore p {
-  font-size: 17px;
+  font-size: clamp(14px, 1.1vw, 17px);
   color: #fff;
   font-weight: 300;
 }
@@ -269,29 +281,29 @@ section.GetStarted {
 
 section.GetStarted .Heading h1 {
   color: #fff;
-  font-size: 52px;
+  font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 600;
 }
 section.GetStarted .Heading p {
   color: #fff;
-  font-size: 22px;
+  font-size: clamp(18px, 1.4vw, 22px);
   font-weight: 400;
   margin-bottom: 60px;
 }
 section.GetStarted .steps h4 {
-  font-size: 24px;
+  font-size: clamp(20px, 1.5vw, 24px);
   color: #fff;
   font-weight: 600;
   margin-bottom: 20px;
 }
 section.GetStarted .steps h4 span {
-  font-size: 30px;
+  font-size: clamp(24px, 2vw, 30px);
   color: #fff;
   font-weight: 700;
   margin-right: 10px;
 }
 section.GetStarted .steps p {
-  font-size: 17px;
+  font-size: clamp(14px, 1.1vw, 17px);
   color: #fff;
   font-weight: 300;
   line-height: 28px;
@@ -304,12 +316,12 @@ section.ApplyPrivate {
 
 section.ApplyPrivate .Heading h1 {
   color: #fff;
-  font-size: 52px;
+  font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 600;
 }
 section.ApplyPrivate .Heading p {
   color: #fff;
-  font-size: 22px;
+  font-size: clamp(18px, 1.4vw, 22px);
   font-weight: 400;
   margin-bottom: 60px;
   line-height: 28px;
@@ -326,18 +338,18 @@ section.ApplyPrivate .Heading p {
 }
 
 section.ContactUs .text h2 {
-  font-size: 24px;
+  font-size: clamp(20px, 1.5vw, 24px);
   color: #0c0c0c;
   font-weight: 400;
   margin-bottom: 0px;
 }
 section.ContactUs .text h1 {
   color: #0c0c0c;
-  font-size: 52px;
+  font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 600;
 }
 section.ContactUs .text span {
-  font-size: 16px;
+  font-size: clamp(14px, 1vw, 16px);
   color: #0c0c0c;
   font-weight: 400;
   margin-bottom: 0px;
@@ -346,7 +358,7 @@ section.ContactUs .text img {
   width: 30px;
 }
 section.ContactUs .text p {
-  font-size: 17px;
+  font-size: clamp(14px, 1.1vw, 17px);
   color: #646464;
   line-height: 28px;
   margin-bottom: 40px;
@@ -363,13 +375,13 @@ section.ContactUs .text p {
 .ContactUsInp input,
 .ContactUsInp textarea {
   border: none;
-  font-size: 17px;
+  font-size: clamp(14px, 1.1vw, 17px);
   color: #6e6e6e;
 }
 .ContactUsInp input::placeholder,
 .ContactUsInp textarea::placeholder {
   color: #6e6e6e;
-  font-size: 17px;
+  font-size: clamp(14px, 1.1vw, 17px);
 }
 
 .ContactUsInp input:focus,
@@ -383,26 +395,26 @@ section.custom-footer {
 }
 
 .address h4 {
-  font-size: 24px;
+  font-size: clamp(20px, 1.5vw, 24px);
   color: #fff;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .address p {
-  font-size: 22px;
+  font-size: clamp(18px, 1.4vw, 22px);
   color: #fff;
   font-weight: 300;
   line-height: 30px;
   margin: 0px;
 }
 .footer-links h6 {
-  font-size: 28px;
+  font-size: clamp(22px, 1.8vw, 28px);
   color: #fff;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .footer-links a {
-  font-size: 17px;
+  font-size: clamp(14px, 1.1vw, 17px);
   color: #fff !important;
   font-weight: 300;
   line-height: 30px;
@@ -577,12 +589,12 @@ section.custom-footer {
   }
 
   .modal-message {
-    font-size: 16px;
+    font-size: clamp(14px, 1vw, 16px);
   }
 
   .modal-close {
     padding: 6px;
-    font-size: 14px;
+    font-size: clamp(12px, 0.9vw, 14px);
     width: 80px;
   }
   .custom-header .navbar-brand img {
@@ -670,13 +682,13 @@ iframe {
 /*==================================================================
     [ Text ]*/
 .txt1 {
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 13px);
   line-height: 1.4;
   color: #555555;
 }
 
 .txt2 {
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 13px);
   line-height: 1.4;
   color: #999999;
 }
@@ -777,7 +789,7 @@ iframe {
   width: 100%;
   display: block;
   /* font-family: Poppins-Regular; */
-  font-size: 2rem !important;
+  font-size: clamp(1.5rem, 2vw, 2rem) !important;
   color: #333333;
   line-height: 1.2;
   text-align: center;
@@ -804,7 +816,7 @@ iframe {
 
 .label-input100 {
   font-family: Montserrat-Regular;
-  font-size: 18px;
+  font-size: clamp(16px, 1.2vw, 18px);
   color: #999999;
   line-height: 1.2;
 
@@ -827,7 +839,7 @@ iframe {
   width: 100%;
   background: transparent;
   font-family: Montserrat-Regular;
-  font-size: 18px;
+  font-size: clamp(16px, 1.2vw, 18px);
   color: #555555;
   line-height: 1.2;
   padding: 0 26px;
@@ -898,7 +910,7 @@ input.input100 {
 
 .input100:focus + .focus-input100 + .label-input100 {
   top: 14px;
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 13px);
 }
 
 .has-val {
@@ -907,7 +919,7 @@ input.input100 {
 
 .has-val + .focus-input100 + .label-input100 {
   top: 14px;
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 13px);
 }
 
 /*==================================================================
@@ -919,7 +931,7 @@ input.input100 {
 
 .label-checkbox100 {
   font-family: Poppins-Regular;
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 13px);
   color: #999999;
   line-height: 1.4;
 
@@ -932,7 +944,7 @@ input.input100 {
 .label-checkbox100::before {
   content: "\f00c";
   font-family: FontAwesome;
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 13px);
   color: transparent;
 
   display: -webkit-box;
@@ -1329,4 +1341,24 @@ input.input100 {
   background-color: #ec5353;
   color: #fff;
   border: none;
+}
+
+.custom-header .navbar-nav .nav-link:focus {
+  outline: 2px solid var(--primaryColor);
+  outline-offset: 2px;
+}
+
+.btn-dark-gradiant:focus,
+.btn-light-gradiant:focus {
+  outline: 2px solid var(--primaryColor);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(118, 63, 152, 0.25);
+}
+
+/* improve input focus states */
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--primaryColor);
+  outline-offset: 2px;
+  transition: outline-offset 0.25s ease;
 }
