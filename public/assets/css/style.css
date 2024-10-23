@@ -22,7 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   font-size: clamp(16px, 1.1vw, 17px);
-  color: #6f6f6f;
+  color: var(--textGray);
   font-weight: 400;
   line-height: 24px;
 }
@@ -40,7 +40,7 @@ body {
 }
 .custom-header .navbar {
   /* background-color: rgba(255, 255, 255, 0.8); */
-  background-color: #fff;
+  background-color: var(--white);
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 0px 8px;
   border-radius: 100px;
@@ -59,25 +59,25 @@ body {
   font-size: clamp(14px, 1vw, 16px) !important;
 }
 .custom-header .navbar-nav .nav-link {
-  color: #a09d9d;
+  color: var(--lightGray);
   font-size: clamp(14px, 1vw, 16px);
   font-weight: 500;
   padding: 10px 30px;
 }
 .custom-header .navbar-nav .nav-link.active {
-  color: #6c6c6c;
+  color: var(--textGray);
   font-size: clamp(14px, 1vw, 16px);
   font-weight: 600;
 }
 
 .custom-header .navbar-nav .nav-item a {
-  color: #a09d9d;
+  color: var(--lightGray);
   font-size: clamp(16px, 1.2vw, 18px);
   font-weight: 500;
   padding: 10px 30px;
 }
 .custom-header .navbar-nav .nav-item.active a {
-  color: #6c6c6c;
+  color: var(--textGray);
   font-size: clamp(16px, 1.2vw, 18px);
   font-weight: 600;
 }
@@ -94,17 +94,17 @@ body {
   box-shadow: var(--gradientStart) 1px 1px 7px 0px;
 }
 .btn-light-gradiant {
-  background-color: #fff !important;
+  background-color: var(--white) !important;
   border-radius: 100px !important;
   border: none !important;
-  color: #6a6a6a !important;
+  color: var(--textGray) !important;
   padding: 8px 25px !important;
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 0px 8px;
   font-weight: 600;
 }
 .content-76-btn {
-  color: #a1a0a2;
+  color: var(--lightGray);
   font-size: clamp(16px, 1.2vw, 18px);
   text-decoration: underline;
   font-weight: 300;
@@ -141,7 +141,7 @@ section.SliderBanner .content h1 {
   border-radius: 10px;
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  background-color: #ffffff;
+  background-color: var(--white);
   padding: 40px 20px;
   position: relative;
   transition: 1s;
@@ -149,29 +149,29 @@ section.SliderBanner .content h1 {
 }
 .ziza-template-content-1-boxes.itemOne {
   /* background-color: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%) ; */
-  background-color: #7f40a6;
+  background-color: var(--gradientEnd);
 }
 .ziza-template-content-1-boxes.itemOne h5 {
   /* color: #fff;
     font-size: 16px;
     font-weight: 400; */
-  color: #fff;
+  color: var(--white);
   font-size: clamp(18px, 1.4vw, 22px);
   font-weight: 600;
 }
 .ziza-template-content-1-boxes.itemOne p {
-  color: #fff;
+  color: var(--white);
   font-size: clamp(14px, 1vw, 16px);
   font-weight: 400;
   line-height: 28px;
 }
 .ziza-template-content-1-boxes h5 {
-  color: #303030;
+  color: var(--secondaryColor);
   font-size: clamp(18px, 1.4vw, 22px);
   font-weight: 600;
 }
 .ziza-template-content-1-boxes p {
-  color: #6e6e6e;
+  color: var(--textGray);
   font-size: clamp(12px, 0.9vw, 14px);
   font-weight: 400;
 }
@@ -188,12 +188,12 @@ section.SliderBanner .content h1 {
     rgba(255, 0, 0, 0.8),
     rgba(255, 0, 0, 0) 70.71%
   );
-  background-color: #7f40a6;
+  background-color: var(--gradientEnd);
 }
 
 .ziza-template-content-1-boxes:hover h5,
 .ziza-template-content-1-boxes:hover p {
-  color: #fff;
+  color: var(--white);
 }
 
 section.EveryThingYouNeed {
@@ -208,7 +208,7 @@ section.EveryThingYouNeed .text h2 {
   font-weight: 600;
 }
 section.EveryThingYouNeed .text p {
-  color: #6e6e6e;
+  color: var(--textGray);
   /* font-size: 28px; */
   font-size: clamp(16px, 1.3vw, 1.3125rem);
   font-weight: 400;
@@ -223,18 +223,18 @@ section.EveryThingYouNeed .text p {
   background-size: cover;
   background-repeat: no-repeat;
   padding: 100px 200px;
-  background-color: #ad46ec;
+  background-color: var(--gradientStart);
   background-attachment: fixed;
   border-radius: 20px;
 }
 .PrimeMember h1 {
-  color: #fff;
+  color: var(--white);
   font-size: clamp(2rem, 5vw, 52px);
   font-weight: 700;
   margin-bottom: 15px;
 }
 .PrimeMember p {
-  color: #fff;
+  color: var(--white);
   margin-bottom: 25px;
   font-size: clamp(16px, 1.3vw, 1.3125rem);
   font-weight: 300;
@@ -257,18 +257,18 @@ section.EveryThingYouNeed .text p {
 }
 
 .aboutUs p {
-  color: #6e6e6e;
+  color: var(--textGray);
   font-size: clamp(16px, 1.3vw, 1.3125rem);
   font-weight: 300;
   line-height: 28px;
 }
 section.ReadMore {
-  background-color: #16171d;
+  background-color: var(--darkBg);
   padding: 50px 0px;
 }
 section.ReadMore p {
   font-size: clamp(14px, 1.1vw, 17px);
-  color: #fff;
+  color: var(--white);
   font-weight: 300;
 }
 
@@ -280,47 +280,51 @@ section.GetStarted {
 }
 
 section.GetStarted .Heading h1 {
-  color: #fff;
+  color: var(--white);
   font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 600;
 }
 section.GetStarted .Heading p {
-  color: #fff;
+  color: var(--white);
   font-size: clamp(18px, 1.4vw, 22px);
   font-weight: 400;
   margin-bottom: 60px;
 }
 section.GetStarted .steps h4 {
   font-size: clamp(20px, 1.5vw, 24px);
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
   margin-bottom: 20px;
 }
 section.GetStarted .steps h4 span {
   font-size: clamp(24px, 2vw, 30px);
-  color: #fff;
+  color: var(--white);
   font-weight: 700;
   margin-right: 10px;
 }
 section.GetStarted .steps p {
   font-size: clamp(14px, 1.1vw, 17px);
-  color: #fff;
+  color: var(--white);
   font-weight: 300;
   line-height: 28px;
 }
 
 section.ApplyPrivate {
   padding: 100px 20px 0px 20px;
-  background-image: linear-gradient(to right, #b346f5, #8641b1);
+  background-image: linear-gradient(
+    to right,
+    var(--gradientStart),
+    var(--gradientEnd)
+  );
 }
 
 section.ApplyPrivate .Heading h1 {
-  color: #fff;
+  color: var(--white);
   font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 600;
 }
 section.ApplyPrivate .Heading p {
-  color: #fff;
+  color: var(--white);
   font-size: clamp(18px, 1.4vw, 22px);
   font-weight: 400;
   margin-bottom: 60px;
@@ -330,27 +334,27 @@ section.ApplyPrivate .Heading p {
   width: 100%;
   padding: 14px 12px;
   border-radius: 9px;
-  border: 2px solid #fff;
+  border: 2px solid var(--white);
   background-color: transparent;
 }
 .ApplyPrivateInp input::placeholder {
-  color: #fff;
+  color: var(--white);
 }
 
 section.ContactUs .text h2 {
   font-size: clamp(20px, 1.5vw, 24px);
-  color: #0c0c0c;
+  color: var(--secondaryColor);
   font-weight: 400;
   margin-bottom: 0px;
 }
 section.ContactUs .text h1 {
-  color: #0c0c0c;
+  color: var(--secondaryColor);
   font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 600;
 }
 section.ContactUs .text span {
   font-size: clamp(14px, 1vw, 16px);
-  color: #0c0c0c;
+  color: var(--secondaryColor);
   font-weight: 400;
   margin-bottom: 0px;
 }
@@ -359,13 +363,13 @@ section.ContactUs .text img {
 }
 section.ContactUs .text p {
   font-size: clamp(14px, 1.1vw, 17px);
-  color: #646464;
+  color: var(--textGray);
   line-height: 28px;
   margin-bottom: 40px;
 }
 .ContactUsInp .input-group {
   border: none;
-  border-bottom: 1px solid #646464;
+  border-bottom: 1px solid var(--textGray);
   margin-bottom: 30px;
   padding: 20px 0px;
 }
@@ -376,11 +380,11 @@ section.ContactUs .text p {
 .ContactUsInp textarea {
   border: none;
   font-size: clamp(14px, 1.1vw, 17px);
-  color: #6e6e6e;
+  color: var(--textGray);
 }
 .ContactUsInp input::placeholder,
 .ContactUsInp textarea::placeholder {
-  color: #6e6e6e;
+  color: var(--textGray);
   font-size: clamp(14px, 1.1vw, 17px);
 }
 
@@ -390,32 +394,32 @@ section.ContactUs .text p {
 }
 
 section.custom-footer {
-  background-color: #181818;
+  background-color: var(--darkBg);
   padding: 100px 0px;
 }
 
 .address h4 {
   font-size: clamp(20px, 1.5vw, 24px);
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
   margin-bottom: 10px;
 }
 .address p {
   font-size: clamp(18px, 1.4vw, 22px);
-  color: #fff;
+  color: var(--white);
   font-weight: 300;
   line-height: 30px;
   margin: 0px;
 }
 .footer-links h6 {
   font-size: clamp(22px, 1.8vw, 28px);
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
   margin-bottom: 10px;
 }
 .footer-links a {
   font-size: clamp(14px, 1.1vw, 17px);
-  color: #fff !important;
+  color: var(--white) !important;
   font-weight: 300;
   line-height: 30px;
   margin: 25px 0px;
@@ -427,8 +431,12 @@ section.custom-footer {
 .footer-links .input-group-btn button {
   min-height: 50px;
   border-radius: 0 20px 20px 0;
-  background-image: linear-gradient(to right, #b546f9, #7f40a6);
-  color: #fff;
+  background-image: linear-gradient(
+    to right,
+    var(--gradientStart),
+    var(--gradientEnd)
+  );
+  color: var(--white);
 }
 
 @media only screen and (max-width: 1340px) {
@@ -523,7 +531,11 @@ section.custom-footer {
   }
   section.ApplyPrivate {
     padding: 30px 20px 0px 20px;
-    background-image: linear-gradient(to right, #b346f5, #8641b1);
+    background-image: linear-gradient(
+      to right,
+      var(--gradientStart),
+      var(--gradientEnd)
+    );
   }
 }
 
@@ -561,20 +573,20 @@ section.custom-footer {
 .modal-body {
   word-wrap: break-word;
   padding: 20px;
-  background-color: red;
+  background-color: var(--errorRed);
   background-image: linear-gradient(to right, #720e9e, #4b0082);
   background-clip: padding-box;
 }
 
 .modal-message {
-  color: white;
+  color: var(--white);
   display: inline;
   text-align: left;
 }
 
 .modal-close {
-  background-color: white;
-  color: red;
+  background-color: var(--white);
+  color: var(--errorRed);
   padding: 8px;
   width: 100px;
   border-radius: 10px;
@@ -739,7 +751,7 @@ iframe {
 
 .wrap-login100 {
   width: 100%;
-  background: #fff;
+  background: var(--white);
   overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
@@ -790,7 +802,7 @@ iframe {
   display: block;
   /* font-family: Poppins-Regular; */
   font-size: clamp(1.5rem, 2vw, 2rem) !important;
-  color: #333333;
+  color: var(--secondaryColor);
   line-height: 1.2;
   text-align: center;
 }
