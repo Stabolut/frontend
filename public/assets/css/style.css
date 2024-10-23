@@ -20,8 +20,8 @@ body {
   overflow-x: hidden !important;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-size: clamp(16px, 1.1vw, 17px);
+  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--fs-base);
   color: var(--textGray);
   font-weight: 400;
   line-height: 24px;
@@ -53,32 +53,32 @@ body {
   max-width: 110px;
 }
 .main-heading {
-  font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
+  font-size: var(--fs-h2) !important;
 }
 .font-16 {
-  font-size: clamp(14px, 1vw, 16px) !important;
+  font-size: var(--fs-base) !important;
 }
 .custom-header .navbar-nav .nav-link {
   color: var(--lightGray);
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: var(--fs-sm);
   font-weight: 500;
   padding: 10px 30px;
 }
 .custom-header .navbar-nav .nav-link.active {
   color: var(--textGray);
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: var(--fs-sm);
   font-weight: 600;
 }
 
 .custom-header .navbar-nav .nav-item a {
   color: var(--lightGray);
-  font-size: clamp(16px, 1.2vw, 18px);
+  font-size: var(--fs-base);
   font-weight: 500;
   padding: 10px 30px;
 }
 .custom-header .navbar-nav .nav-item.active a {
   color: var(--textGray);
-  font-size: clamp(16px, 1.2vw, 18px);
+  font-size: var(--fs-base);
   font-weight: 600;
 }
 .btn-dark-gradiant {
@@ -105,7 +105,7 @@ body {
 }
 .content-76-btn {
   color: var(--lightGray);
-  font-size: clamp(16px, 1.2vw, 18px);
+  font-size: var(--fs-base);
   text-decoration: underline;
   font-weight: 300;
   margin-left: 10px;
@@ -127,7 +127,7 @@ section.SliderBanner .content {
 }
 section.SliderBanner .content h4 {
   color: var(--primaryColor);
-  font-size: clamp(20px, 1.5vw, 24px);
+  font-size: var(--fs-h4);
   font-weight: 700;
 }
 section.SliderBanner .content h1 {
@@ -156,23 +156,23 @@ section.SliderBanner .content h1 {
     font-size: 16px;
     font-weight: 400; */
   color: var(--white);
-  font-size: clamp(18px, 1.4vw, 22px);
+  font-size: var(--fs-h4);
   font-weight: 600;
 }
 .ziza-template-content-1-boxes.itemOne p {
   color: var(--white);
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: var(--fs-base);
   font-weight: 400;
   line-height: 28px;
 }
 .ziza-template-content-1-boxes h5 {
   color: var(--secondaryColor);
-  font-size: clamp(18px, 1.4vw, 22px);
+  font-size: var(--fs-h4);
   font-weight: 600;
 }
 .ziza-template-content-1-boxes p {
   color: var(--textGray);
-  font-size: clamp(12px, 0.9vw, 14px);
+  font-size: var(--fs-sm);
   font-weight: 400;
 }
 .ziza-template-content-1-boxes .Image img {
@@ -204,13 +204,13 @@ section.EveryThingYouNeed {
 
 section.EveryThingYouNeed .text h2 {
   color: var(--secondaryColor);
-  font-size: clamp(32px, 3.5vw, 52px);
+  font-size: var(--fs-h1);
   font-weight: 600;
 }
 section.EveryThingYouNeed .text p {
   color: var(--textGray);
   /* font-size: 28px; */
-  font-size: clamp(16px, 1.3vw, 1.3125rem);
+  font-size: var(--fs-base);
   font-weight: 400;
   line-height: 28px;
 }
@@ -229,14 +229,14 @@ section.EveryThingYouNeed .text p {
 }
 .PrimeMember h1 {
   color: var(--white);
-  font-size: clamp(2rem, 5vw, 52px);
+  font-size: var(--fs-h1);
   font-weight: 700;
   margin-bottom: 15px;
 }
 .PrimeMember p {
   color: var(--white);
   margin-bottom: 25px;
-  font-size: clamp(16px, 1.3vw, 1.3125rem);
+  font-size: var(--fs-base);
   font-weight: 300;
   line-height: 28px;
 }
@@ -251,14 +251,14 @@ section.EveryThingYouNeed .text p {
 }
 .aboutUs h2 {
   color: var(--secondaryColor);
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: var(--fs-h1);
   font-weight: 600;
   margin-bottom: 30px;
 }
 
 .aboutUs p {
   color: var(--textGray);
-  font-size: clamp(16px, 1.3vw, 1.3125rem);
+  font-size: var(--fs-base);
   font-weight: 300;
   line-height: 28px;
 }
@@ -267,7 +267,7 @@ section.ReadMore {
   padding: 50px 0px;
 }
 section.ReadMore p {
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: var(--fs-base);
   color: var(--white);
   font-weight: 300;
 }
@@ -281,29 +281,29 @@ section.GetStarted {
 
 section.GetStarted .Heading h1 {
   color: var(--white);
-  font-size: clamp(32px, 3.5vw, 52px);
+  font-size: var(--fs-h1);
   font-weight: 600;
 }
 section.GetStarted .Heading p {
   color: var(--white);
-  font-size: clamp(18px, 1.4vw, 22px);
+  font-size: var(--fs-h4);
   font-weight: 400;
   margin-bottom: 60px;
 }
 section.GetStarted .steps h4 {
-  font-size: clamp(20px, 1.5vw, 24px);
+  font-size: var(--fs-h4);
   color: var(--white);
   font-weight: 600;
   margin-bottom: 20px;
 }
 section.GetStarted .steps h4 span {
-  font-size: clamp(24px, 2vw, 30px);
+  font-size: var(--fs-h3);
   color: var(--white);
   font-weight: 700;
   margin-right: 10px;
 }
 section.GetStarted .steps p {
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: var(--fs-base);
   color: var(--white);
   font-weight: 300;
   line-height: 28px;
@@ -320,12 +320,12 @@ section.ApplyPrivate {
 
 section.ApplyPrivate .Heading h1 {
   color: var(--white);
-  font-size: clamp(32px, 3.5vw, 52px);
+  font-size: var(--fs-h1);
   font-weight: 600;
 }
 section.ApplyPrivate .Heading p {
   color: var(--white);
-  font-size: clamp(18px, 1.4vw, 22px);
+  font-size: var(--fs-h4);
   font-weight: 400;
   margin-bottom: 60px;
   line-height: 28px;
@@ -342,18 +342,18 @@ section.ApplyPrivate .Heading p {
 }
 
 section.ContactUs .text h2 {
-  font-size: clamp(20px, 1.5vw, 24px);
+  font-size: var(--fs-h4);
   color: var(--secondaryColor);
   font-weight: 400;
   margin-bottom: 0px;
 }
 section.ContactUs .text h1 {
   color: var(--secondaryColor);
-  font-size: clamp(32px, 3.5vw, 52px);
+  font-size: var(--fs-h1);
   font-weight: 600;
 }
 section.ContactUs .text span {
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: var(--fs-sm);
   color: var(--secondaryColor);
   font-weight: 400;
   margin-bottom: 0px;
@@ -362,7 +362,7 @@ section.ContactUs .text img {
   width: 30px;
 }
 section.ContactUs .text p {
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: var(--fs-base);
   color: var(--textGray);
   line-height: 28px;
   margin-bottom: 40px;
@@ -379,13 +379,13 @@ section.ContactUs .text p {
 .ContactUsInp input,
 .ContactUsInp textarea {
   border: none;
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: var(--fs-base);
   color: var(--textGray);
 }
 .ContactUsInp input::placeholder,
 .ContactUsInp textarea::placeholder {
   color: var(--textGray);
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: var(--fs-base);
 }
 
 .ContactUsInp input:focus,
@@ -399,26 +399,26 @@ section.custom-footer {
 }
 
 .address h4 {
-  font-size: clamp(20px, 1.5vw, 24px);
+  font-size: var(--fs-h4);
   color: var(--white);
   font-weight: 600;
   margin-bottom: 10px;
 }
 .address p {
-  font-size: clamp(18px, 1.4vw, 22px);
+  font-size: var(--fs-h4);
   color: var(--white);
   font-weight: 300;
   line-height: 30px;
   margin: 0px;
 }
 .footer-links h6 {
-  font-size: clamp(22px, 1.8vw, 28px);
+  font-size: var(--fs-h3);
   color: var(--white);
   font-weight: 600;
   margin-bottom: 10px;
 }
 .footer-links a {
-  font-size: clamp(14px, 1.1vw, 17px);
+  font-size: var(--fs-base);
   color: var(--white) !important;
   font-weight: 300;
   line-height: 30px;
@@ -437,117 +437,6 @@ section.custom-footer {
     var(--gradientEnd)
   );
   color: var(--white);
-}
-
-@media only screen and (max-width: 1340px) {
-  section.SliderBanner .content {
-    /* top: 52px; */
-    margin-top: 52px;
-    margin-bottom: 150px;
-  }
-  section.SliderBanner .content h1 {
-    font-size: 40px;
-  }
-}
-@media only screen and (max-width: 1340px) {
-  section.ReadMore {
-    padding: 30px 0px;
-  }
-  section.ReadMore .d-flex {
-    display: block !important;
-    text-align: center;
-    text-align: -webkit-center;
-    text-align: -moz-center;
-  }
-  section.ReadMore p {
-    margin-bottom: 20px !important;
-  }
-}
-@media only screen and (max-width: 991px) {
-  section.SliderBanner .content h4 {
-    font-size: 20px;
-  }
-  section.SliderBanner .content {
-    /* top: 20px; */
-    margin-top: 20px;
-    margin-bottom: 80px;
-  }
-  section.SliderBanner .content h1 {
-    font-size: 30px;
-  }
-  .PrimeMember {
-    padding: 50px;
-  }
-  .custom-header .navbar {
-    border-radius: 0px;
-  }
-  .custom-header .navbar-nav {
-    margin-top: 30px;
-  }
-  .custom-header .navbar-nav .nav-link {
-    padding: 20px 0px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  section.SliderBanner .content {
-    margin-bottom: 50px;
-  }
-  .g-img {
-    text-align: center;
-    text-align: -webkit-center;
-    text-align: -moz-center;
-  }
-  .g-img img {
-    position: absolute;
-    top: 0px;
-    width: 50% !important;
-    opacity: 0.4;
-  }
-  .positionImg img {
-    position: absolute;
-    right: 0px;
-    width: 50%;
-    z-index: -1;
-    opacity: 0.3;
-  }
-  .mob-display {
-    display: block;
-  }
-  .mob-display .aboutUs {
-    text-align: center;
-    text-align: -webkit-center;
-    text-align: -moz-center;
-  }
-  .mob-display .aboutUs img {
-    width: 100%;
-    margin-bottom: 40px;
-  }
-  .web-display {
-    display: none;
-  }
-  section.GetStarted {
-    padding: 30px 0px;
-  }
-  section.ApplyPrivate {
-    padding: 30px 20px 0px 20px;
-    background-image: linear-gradient(
-      to right,
-      var(--gradientStart),
-      var(--gradientEnd)
-    );
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .PrimeMember {
-    padding: 20px;
-  }
-
-  .g-img img {
-    right: 0px;
-    width: 100% !important;
-  }
 }
 
 /* 
@@ -593,31 +482,6 @@ section.custom-footer {
   border: none;
   font-weight: 500;
   margin-top: 16px;
-}
-
-@media only screen and (max-width: 600px) {
-  .modal-body {
-    padding: 10px;
-  }
-
-  .modal-message {
-    font-size: clamp(14px, 1vw, 16px);
-  }
-
-  .modal-close {
-    padding: 6px;
-    font-size: clamp(12px, 0.9vw, 14px);
-    width: 80px;
-  }
-  .custom-header .navbar-brand img {
-    max-width: 110px !important;
-  }
-  .mb-s {
-    margin-bottom: 20px;
-  }
-  .banner img {
-    max-width: 60%;
-  }
 }
 
 /* html {
@@ -694,13 +558,13 @@ iframe {
 /*==================================================================
     [ Text ]*/
 .txt1 {
-  font-size: clamp(12px, 0.9vw, 13px);
+  font-size: var(--fs-xs);
   line-height: 1.4;
   color: #555555;
 }
 
 .txt2 {
-  font-size: clamp(12px, 0.9vw, 13px);
+  font-size: var(--fs-xs);
   line-height: 1.4;
   color: #999999;
 }
@@ -801,7 +665,7 @@ iframe {
   width: 100%;
   display: block;
   /* font-family: Poppins-Regular; */
-  font-size: clamp(1.5rem, 2vw, 2rem) !important;
+  font-size: var(--fs-h3) !important;
   color: var(--secondaryColor);
   line-height: 1.2;
   text-align: center;
@@ -828,7 +692,7 @@ iframe {
 
 .label-input100 {
   font-family: Montserrat-Regular;
-  font-size: clamp(16px, 1.2vw, 18px);
+  font-size: var(--fs-base);
   color: #999999;
   line-height: 1.2;
 
@@ -851,7 +715,7 @@ iframe {
   width: 100%;
   background: transparent;
   font-family: Montserrat-Regular;
-  font-size: clamp(16px, 1.2vw, 18px);
+  font-size: var(--fs-base);
   color: #555555;
   line-height: 1.2;
   padding: 0 26px;
@@ -922,7 +786,7 @@ input.input100 {
 
 .input100:focus + .focus-input100 + .label-input100 {
   top: 14px;
-  font-size: clamp(12px, 0.9vw, 13px);
+  font-size: var(--fs-xs);
 }
 
 .has-val {
@@ -931,7 +795,7 @@ input.input100 {
 
 .has-val + .focus-input100 + .label-input100 {
   top: 14px;
-  font-size: clamp(12px, 0.9vw, 13px);
+  font-size: var(--fs-xs);
 }
 
 /*==================================================================
@@ -943,7 +807,7 @@ input.input100 {
 
 .label-checkbox100 {
   font-family: Poppins-Regular;
-  font-size: clamp(12px, 0.9vw, 13px);
+  font-size: var(--fs-xs);
   color: #999999;
   line-height: 1.4;
 
@@ -956,7 +820,7 @@ input.input100 {
 .label-checkbox100::before {
   content: "\f00c";
   font-family: FontAwesome;
-  font-size: clamp(12px, 0.9vw, 13px);
+  font-size: var(--fs-xs);
   color: transparent;
 
   display: -webkit-box;
@@ -1013,7 +877,7 @@ input.input100 {
   border-radius: 10px;
   background: #6675df;
 
-  font-size: 12px;
+  font-size: var(--fs-xs);
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
@@ -1027,39 +891,6 @@ input.input100 {
 
 .login100-form-btn:hover {
   background: #333333;
-}
-
-/*------------------------------------------------------------------
-    [ Responsive ]*/
-
-@media (max-width: 992px) {
-  .login100-form {
-    width: 50%;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .login100-more {
-    width: 50%;
-  }
-}
-
-@media (max-width: 768px) {
-  .login100-form {
-    width: 100%;
-  }
-
-  .login100-more {
-    display: none;
-  }
-}
-
-@media (max-width: 576px) {
-  .login100-form {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 70px;
-  }
 }
 
 /*------------------------------------------------------------------
@@ -1089,7 +920,7 @@ input.input100 {
 
   font-family: Poppins-Regular;
   color: #c80000;
-  font-size: 13px;
+  font-size: var(--fs-xs);
   line-height: 1.4;
   text-align: left;
 
@@ -1109,7 +940,7 @@ input.input100 {
   position: absolute;
   z-index: 110;
   color: #c80000;
-  font-size: 16px;
+  font-size: var(--fs-base);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
@@ -1124,19 +955,12 @@ input.input100 {
   opacity: 1;
 }
 
-@media (max-width: 992px) {
-  .alert-validate::before {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
 /*==================================================================
     [ Social ]*/
 .login100-form-social-item {
   width: 36px;
   height: 36px;
-  font-size: 18px;
+  font-size: var(--fs-lg);
   color: #fff;
   border-radius: 50%;
 }
@@ -1290,41 +1114,6 @@ input.input100 {
   display: none;
 }
 
-@media only screen and (max-width: 991px) {
-  .qr-code {
-    margin: 0px;
-    margin-top: 20px;
-  }
-  .text-md-center {
-    text-align: center;
-    text-align: -webkit-center;
-    text-align: -moz-center;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .iq-sidebar {
-    display: none;
-  }
-  .content-page {
-    margin: 0px;
-  }
-  .iq-sidebar-logo {
-    justify-content: flex-start !important;
-  }
-  .custom-nav-dashboard {
-    display: block;
-  }
-  .custom-nav-dashboard .navbar-nav a {
-    color: #6f6f6f;
-    margin: 10px;
-  }
-  .custom-nav-dashboard .container {
-    border-bottom: 1px solid #6f6f6f;
-    padding-bottom: 10px;
-  }
-}
-
 .ErrorAlert .modal-header {
   background-color: #ec5353;
   -webkit-box-pack: center;
@@ -1374,3 +1163,5 @@ textarea:focus {
   outline-offset: 2px;
   transition: outline-offset 0.25s ease;
 }
+
+@import "_responsive.css";
