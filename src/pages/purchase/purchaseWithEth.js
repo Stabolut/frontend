@@ -110,10 +110,10 @@ class PurchaseWithEth extends Component {
 
       let msg, title;
       if (data.data === true) {
-          msg = InfoMessage.userWalletFoundInfo(this.state.usbAddress, this.state.amount, "ETH");
+        msg = InfoMessage.userWalletFoundInfo(this.state.usbAddress, this.state.amount, "ETH");
         title = "Purchase Confirmation";
       } else {
-        msg =   msg = InfoMessage.UserWalletNotFoundInfotMessage(this.state.usbAddress,this.state.amount, "ETH");
+        msg = msg = InfoMessage.UserWalletNotFoundInfotMessage(this.state.usbAddress, this.state.amount, "ETH");
         title = "Wallet Not Found";
       }
 
@@ -142,19 +142,22 @@ class PurchaseWithEth extends Component {
         let acc = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+      
 
         const web3Instance = new Web3(window.ethereum);
         const networkId = await web3Instance.eth.net.getId();
-
+       
         // Incase user already connected Metamask and right network
         if (networkId.toString() === config.networkID) {
+         
           await window.ethereum.request({
             method: "wallet_switchEthereumChain",
             params: [{ chainId: Web3.utils.toHex(networkId) }],
           });
-
+        
           let transaction = await this.makeTransaction(web3Instance, acc);
-
+          console.log("transaction", transaction)
+        
 
           let dataObject = {
             hash: transaction.hash,
@@ -174,6 +177,7 @@ class PurchaseWithEth extends Component {
         }
         // if user not connected to the right network of Metamask
         else {
+        
           await window.ethereum.request({
             method: "wallet_switchEthereumChain",
             params: [{ chainId: Web3.utils.toHex(parseInt(config.networkID)) }],
@@ -209,7 +213,7 @@ class PurchaseWithEth extends Component {
       }
     } catch (e) {
 
-     
+
 
       this.setState({
         isLoading: false,
@@ -221,31 +225,63 @@ class PurchaseWithEth extends Component {
     }
   };
 
+
+
   makeTransaction = async (web3Instance, acc) => {
-    const balanceWei = await web3Instance.eth.getBalance(acc[0]);
-    const balanceEther = web3Instance.utils.fromWei(balanceWei, "ether");
-    console.log("balance", parseFloat(this.state.amount), "uddd", parseFloat(balanceEther))
-
-    if (parseFloat(this.state.amount) >= parseFloat(balanceEther)) {
-      throw { message: "Balance Insufficient: Your account does not have enough funds to complete the transaction." }
-
+    try {
+      const balanceWei = await web3Instance.eth.getBalance(acc[0]);
+      const balanceEther = web3Instance.utils.fromWei(balanceWei, "ether");
+  
+      if (parseFloat(this.state.amount) >= parseFloat(balanceEther)) {
+        throw new Error(
+          "Balance Insufficient: Your account does not have enough funds to complete the transaction."
+        );
+      }
+  
+      // Estimate the gas limit
+      const gasLimit = await web3Instance.eth.estimateGas({
+        from: acc[0],
+        to: this.state.depositAddress,
+        value: web3Instance.utils.toWei(
+          parseFloat(this.state.amount).toFixed(18).toString(),
+          "ether"
+        ),
+      });
+  
+      // Get the current gas price and block base fee
+      const gasPrice = await web3Instance.eth.getGasPrice();
+      const feeData = await web3Instance.eth.getBlock("latest");
+      const baseFee = parseInt(feeData.baseFeePerGas || 0); // baseFeePerGas is in wei
+  
+      // Set maxFeePerGas and maxPriorityFeePerGas for EIP-1559
+      const maxPriorityFeePerGas = web3Instance.utils.toWei("2", "gwei"); // Recommended priority fee
+      const maxFeePerGas = baseFee + parseInt(maxPriorityFeePerGas);
+  
+      // Send the transaction
+      const transact = await web3Instance.eth.sendTransaction({
+        from: acc[0],
+        to: this.state.depositAddress,
+        value: web3Instance.utils.toWei(
+          parseFloat(this.state.amount).toFixed(18).toString(),
+          "ether"
+        ),
+        gas: gasLimit,
+        maxFeePerGas: maxFeePerGas,
+        maxPriorityFeePerGas: maxPriorityFeePerGas,
+      });
+  
+      let transaction = await web3Instance.eth.getTransaction(transact.transactionHash);
+      console.log("transaction", transaction);
+      return transaction;
+    } catch (e) {
+      alert(`Error: ${e.message || e}`);
+      throw(`Error: ${e.message || e}`);
+      console.error("Transaction Error:", e);
     }
-
-    const gasPrice = await web3Instance.eth.getGasPrice();
-    const transact = await web3Instance.eth.sendTransaction({
-      from: acc[0], // Your wallet address 0.7721
-      to: this.state.depositAddress, // Recipient address 0.1437 0.2437
-      value: web3Instance.utils.toWei(
-        parseFloat(this.state.amount).toFixed(18).toString(),
-        "ether",
-      ),
-      gasLimit: 21000,
-      gasPrice: gasPrice,
-    });
-
-    let transaction = await web3Instance.eth.getTransaction(transact.transactionHash);
-    return transaction;
   };
+  
+
+  
 
   render() {
     return (

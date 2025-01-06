@@ -99,8 +99,6 @@ class GetFreeUSB extends Component {
 
         } catch (e) {
 
-
-
             this.setState({
                 isLoading: false,
                 disable: false,
