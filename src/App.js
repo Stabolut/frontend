@@ -1,16 +1,18 @@
-import { BrowserRouter as Router, Routes, Route,Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import PurchaseWithEth from "./pages/purchase/purchaseWithEth";
 import PurchaseWithBtc from "./pages/purchase/purchaseWithBtc";
 import GetFreeUSB from './pages/purchase/getFreeUSB';
 import NoFound from "./pages/noPageFound/noFound";
-
+import Login from './pages/LoginPage/Login';
 function App() {
   return (
-    
+
     <Router>
       <Routes>
+        {/* Login page route */}
+        <Route path="/" element={<Login/>} />
         {/* Redirect the root path to /purchase-with-eth */}
-        <Route path="/" element={<Navigate to="/purchase-with-eth" />} />
+        {/* <Route path="/" element={<Navigate to="/purchase-with-eth" />} /> */}
         {/* Route for purchasing with Ethereum */}
         <Route path="/purchase-with-eth" element={<PurchaseWithEth />} />
         {/* Route for purchasing with Bitcoin */}

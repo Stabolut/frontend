@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar(props) {
+  const navigate = useNavigate();
   return (
     <>
       <div className="wrapper">
@@ -33,9 +35,18 @@ export default function Sidebar(props) {
                   </Link>
 
                   <Link to="/claim-usb-coin" className="">
-                  {/* <img class="lab la-btc iq-arrow-left" style={{width:30,height:30}} alt="loading..." src="./assets/img/logo.png" /> */}
-                  <i class="las la-coins iq-arrow-left"></i>
+                    {/* <img class="lab la-btc iq-arrow-left" style={{width:30,height:30}} alt="loading..." src="./assets/img/logo.png" /> */}
+                    <i class="las la-coins iq-arrow-left"></i>
                     <span>Get Free USB Coin</span>
+                  </Link>
+                  <Link onClick={() => {
+                    localStorage.removeItem("jwtToken")
+                    navigate("/")
+
+                  }} to="/" className="">
+                    {/* <img class="lab la-btc iq-arrow-left" style={{width:30,height:30}} alt="loading..." src="./assets/img/logo.png" /> */}
+                    <i class="las la-coins mr-2"></i>
+                    <span>Logout</span>
                   </Link>
 
 
@@ -70,8 +81,18 @@ export default function Sidebar(props) {
                 <Link to="/claim-usb-coin" className="">
                   {/* <img class="lab la-btc iq-arrow-left" style={{width:30,height:30}} alt="loading..." src="./assets/img/logo.png" /> */}
                   <i class="las la-coins mr-2"></i>
-                    <span>Get Free USB Coin</span>
-                  </Link>
+                  <span>Get Free USB Coin</span>
+                </Link>
+
+                <Link onClick={() => {
+                  localStorage.removeItem("jwtToken")
+                  navigate("/")
+
+                }} to="/" className="">
+                  {/* <img class="lab la-btc iq-arrow-left" style={{width:30,height:30}} alt="loading..." src="./assets/img/logo.png" /> */}
+                  <i class="las la-coins mr-2"></i>
+                  <span>Logout</span>
+                </Link>
 
 
 

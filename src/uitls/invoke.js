@@ -1,11 +1,32 @@
-import axios from 'axios';
+import axios from "axios";
 
-const invoke = ({ method, baseURL, route, data, headers = { Accept: 'application/json' } }) => {
+
+axios.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    (error) => {
+        if (error?.response?.status === 401) {
+            localStorage.clear();
+            window.location.href = "/";
+        }
+        throw error;
+    },
+);
+
+const invoke = ({
+    method,
+    baseURL,
+    route,
+    data,
+    headers = { Accept: "application/json" },
+}) => {
     return axios({
         method,
         url: `${baseURL}/${route}`,
         data,
-        headers
-    })
-}
+        headers,
+    });
+};
+
 export default invoke;
