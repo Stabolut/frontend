@@ -15,7 +15,7 @@ export const purchaseWithBtc = (data) => {
 
 // Function to make a purchase with Ethereum
 export const purchaseWihtEth = (data) => {
- 
+
   // data = encrypt(data)
   return invoke({
     method: "POST",
@@ -45,12 +45,36 @@ export const checkUserWalletExistence = (data) => {
 };
 
 export const getFreeCoin = (data) => {
- 
+
   // data = encrypt(data)
   return invoke({
     method: "POST",
     baseURL: config.baseuUrl, // Base URL for API requests
     route: "wallet/get-free-coin", // Route for purchasing USB tokens with Ethereum
+    data: data, // Data object containing purchase details
+  });
+};
+
+
+export const LoginFormApi = (data) => {
+
+
+  // data = encrypt(data)
+  return invoke({
+    method: "POST",
+    baseURL: config.baseuUrl, // Base URL for API requests
+    route: "purchase/login", // Route for purchasing USB tokens with Ethereum
+    data: data, // Data object containing purchase details
+  });
+};
+
+export const ResetPassApi = (data) => {
+
+  // data = encrypt(data)
+  return invoke({
+    method: "POST",
+    baseURL: config.baseuUrl, // Base URL for API requests
+    route: "purchase/update-password", // Route for purchasing USB tokens with Ethereum
     data: data, // Data object containing purchase details
   });
 };
