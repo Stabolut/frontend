@@ -1,0 +1,189 @@
+/* Desktop First Approach */
+
+/* Large Desktops (1340px and down) */
+@media only screen and (max-width: 1340px) {
+  section.SliderBanner .content {
+    margin-top: 52px;
+    margin-bottom: 150px;
+  }
+  section.SliderBanner .content h1 {
+    font-size: 40px;
+  }
+
+  section.ReadMore {
+    padding: 30px 0px;
+  }
+  section.ReadMore .d-flex {
+    display: block !important;
+    text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+  }
+  section.ReadMore p {
+    margin-bottom: 20px !important;
+  }
+}
+
+/* Tablets (991px and down) */
+@media only screen and (max-width: 991px) {
+  section.SliderBanner .content h4 {
+    font-size: 20px;
+  }
+  section.SliderBanner .content {
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  section.SliderBanner .content h1 {
+    font-size: 30px;
+  }
+  .PrimeMember {
+    padding: 50px;
+  }
+  .custom-header .navbar {
+    border-radius: 0px;
+  }
+  .custom-header .navbar-nav {
+    margin-top: 30px;
+  }
+  .custom-header .navbar-nav .nav-link {
+    padding: 20px 0px;
+  }
+  .qr-code {
+    margin: 0px;
+    margin-top: 20px;
+  }
+  .text-md-center {
+    text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+  }
+  .alert-validate::before {
+    visibility: visible;
+    opacity: 1;
+  }
+  .login100-form {
+    width: 50%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .login100-more {
+    width: 50%;
+  }
+}
+
+/* Large Phones (768px and down) */
+@media only screen and (max-width: 768px) {
+  section.SliderBanner .content {
+    margin-bottom: 50px;
+  }
+  .g-img {
+    text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+  }
+  .g-img img {
+    position: absolute;
+    top: 0px;
+    width: 50% !important;
+    opacity: 0.4;
+  }
+  .positionImg img {
+    position: absolute;
+    right: 0px;
+    width: 50%;
+    z-index: -1;
+    opacity: 0.3;
+  }
+  .mob-display {
+    display: block;
+  }
+  .mob-display .aboutUs {
+    text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+  }
+  .mob-display .aboutUs img {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .web-display {
+    display: none;
+  }
+  section.GetStarted {
+    padding: 30px 0px;
+  }
+  section.ApplyPrivate {
+    padding: 30px 20px 0px 20px;
+    background-image: linear-gradient(
+      to right,
+      var(--gradientStart),
+      var(--gradientEnd)
+    );
+  }
+  .login100-form {
+    width: 100%;
+  }
+  .login100-more {
+    display: none;
+  }
+  .iq-sidebar {
+    display: none;
+  }
+  .content-page {
+    margin: 0px;
+  }
+  .iq-sidebar-logo {
+    justify-content: flex-start !important;
+  }
+  .custom-nav-dashboard {
+    display: block;
+  }
+  .custom-nav-dashboard .navbar-nav a {
+    color: #6f6f6f;
+    margin: 10px;
+  }
+  .custom-nav-dashboard .container {
+    border-bottom: 1px solid #6f6f6f;
+    padding-bottom: 10px;
+  }
+}
+
+/* Small Phones (600px and down) */
+@media only screen and (max-width: 600px) {
+  .modal-body {
+    padding: 10px;
+  }
+  .modal-message {
+    font-size: clamp(14px, 1vw, 16px);
+  }
+  .modal-close {
+    padding: 6px;
+    font-size: clamp(12px, 0.9vw, 14px);
+    width: 80px;
+  }
+  .custom-header .navbar-brand img {
+    max-width: 110px !important;
+  }
+  .mb-s {
+    margin-bottom: 20px;
+  }
+  .banner img {
+    max-width: 60%;
+  }
+  .login100-form {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 70px;
+  }
+}
+
+/* Extra Small Phones (480px and down) */
+@media only screen and (max-width: 480px) {
+  .PrimeMember {
+    padding: 20px;
+  }
+  .g-img img {
+    right: 0px;
+    width: 100% !important;
+  }
+}

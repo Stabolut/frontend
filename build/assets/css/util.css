@@ -1,0 +1,50 @@
+/*[ FONT SIZE ]
+///////////////////////////////////////////////////////////
+*/
+
+/* Base Font Sizes */
+.fs-xs {
+  font-size: 0.75rem;
+} /* 12px */
+.fs-sm {
+  font-size: 0.875rem;
+} /* 14px */
+.fs-base {
+  font-size: 1rem;
+} /* 16px */
+.fs-lg {
+  font-size: 1.125rem;
+} /* 18px */
+.fs-xl {
+  font-size: 1.25rem;
+} /* 20px */
+
+/* Heading Sizes */
+.fs-h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+} /* 32-56px */
+.fs-h2 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+} /* 28-48px */
+.fs-h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+} /* 24-40px */
+.fs-h4 {
+  font-size: clamp(1.25rem, 2vw, 2rem);
+} /* 20-32px */
+
+/* Display Sizes */
+.fs-display-1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+} /* 48-96px */
+.fs-display-2 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+} /* 40-80px */
+
+/* Utility Sizes */
+.fs-small {
+  font-size: 0.875em;
+} /* Relative to parent */
+.fs-large {
+  font-size: 1.125em;
+} /* Relative to parent */
