@@ -1,115 +1,87 @@
-# Admin Panel for Deposit Transactions
+# Stabolut Token Purchase Web Portal (Frontend)
 
-## Table of Contents
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Additional Information](#additional-information)
-- [Contact](#contact-us)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![React](https://img.shields.io/badge/React-18-61DAFB.svg)](https://reactjs.org/)
 
+A React web application enabling users to purchase **USB Tokens** using **Ethereum (ETH)** or **Bitcoin (BTC)**, with direct wallet integration for MetaMask (EVM) and UniSat (Bitcoin).
 
-## Overview
+---
 
-This admin panel provides a user-friendly interface for processing deposit transactions made to the admin deposit addresses for both Ethereum and Bitcoin. Users can input their transaction hashes, and in return, receive USB tokens according to their deposit amounts. This tool streamlines the process of managing deposits and ensures efficient allocation of tokens.
+## 🌟 Features
 
-## Installation
+- **Multi-Crypto Purchases**: Buy USB tokens with ETH (via smart contracts) or BTC (via testnet/mainnet Bitcoin transactions).
+- **Web3 Wallet Connectivity**: Instant connection with MetaMask and UniSat browser extensions.
+- **Real-Time Exchange Rates**: Live USD conversion rates powered by CoinGecko API.
+- **Order Tracking**: Real-time status polling for transaction confirmations and USB token deliveries.
 
-To run the project locally, follow these steps:
+---
 
-1.   Clone the repository:
+## 💻 Prerequisites
 
-         git clone https://github.com/Stabolut/frontend.git
-     
+- **Node.js**: `>= 18.x` ([nodejs.org](https://nodejs.org/))
+- **Browser Extension Wallet**: [MetaMask](https://metamask.io/) and/or [UniSat Wallet](https://unisat.io/)
+- **Stabolut Backend**: Running locally on `http://localhost:8003` or a remote instance.
 
-3.   Navigate to the project directory:
+---
 
-         cd frontend
+## 🚀 Step-by-Step Setup Guide
 
-4.   Install dependencies:
+### 1. Clone & Install Dependencies
 
-         npm install
-   
-5.   Start the server:
+```bash
+git clone https://github.com/Stabolut/frontend.git
+cd frontend
+npm install
+```
 
-         npm run start
+### 2. Configure Environment Variables
 
-6.   Access the admin panel via your web browser:
+Copy the `.env.example` template:
 
-         http://localhost:3000/
+```bash
+cp .env.example .env
+```
 
-## Usage
+Edit `.env` to configure your backend API and network IDs:
 
+```ini
+# Backend API URL
+REACT_APP_API_URL=http://localhost:8003/api/v1/stabolut
 
-### Purchase USB With Ethereum
+# Ethereum Chain ID (11155111 for Sepolia, 1 for Mainnet)
+REACT_APP_ETH_NETWORK_ID=11155111
 
-1. **User Deposit:**
-   - Users copy or scan the provided Ethereum deposit address displayed on the first screen [https://panel.stabolut.com/purchase-with-eth](https://panel.stabolut.com/purchase-with-eth).
-   - Testnet users can obtain test ether from [Alchemy's Ethereum Goerli faucet](https://www.alchemy.com/faucets/ethereum-goerli) for testing purposes. Once they have obtained test ether, users can proceed to make a transaction to our designated deposit address. This transaction can be executed using any external source compatible with Ethereum transactions, such as Metamask.
+# Bitcoin Network (testnet or mainnet)
+REACT_APP_BTC_NETWORK=testnet
 
-2. **Transaction Completion:**
-   - Once the transaction is completed, users obtain the transaction hash.
+# CoinGecko Exchange Rate API
+REACT_APP_COINGECKO_URL=https://api.coingecko.com/api/v3/simple/
+```
 
-3. **Form Submission:**
-   - Users navigate back to the form on the first screen [https://panel.stabolut.com/purchase-with-eth](https://panel.stabolut.com/purchase-with-eth).
-   - Users enter the obtained transaction hash and their public wallet address into the designated form fields.
+### 3. Run the Development Server
 
-4. **Verification Process:**
-   - The system validates the provided transaction hash against the company's Ethereum deposit address.
-   - If the transaction is found on the deposit address, the system retrieves the deposited amount.
+```bash
+npm start
+```
 
-5. **Token Distribution:**
-   - Upon successful verification, the system credits the user's account with USB tokens corresponding to the deposited amount.
+The application will open automatically in your browser at **`http://localhost:3000`**.
 
-### Verification Flow
+### 4. Build for Production
 
-- The system checks the Ethereum blockchain for transactions associated with the provided transaction hash.
-- If a transaction is found, the system verifies that it was sent to the company's designated deposit address.
-- Upon confirmation, the system credits the appropriate amount of USB tokens to the user's account.
+```bash
+npm run build
+```
 
+This generates optimized static files in the `build/` directory, ready to deploy to Nginx, Vercel, Netlify, or AWS S3.
 
-### Purchase USB With Bitcoin
+---
 
-1. **User Deposit:**
-   - Users copy or scan the provided Bitcoin deposit address displayed on the first screen [https://panel.stabolut.com/purchase-with-btc](https://panel.stabolut.com/purchase-with-btc).
-   - Testnet users can obtain test bitcoins from [CoinFaucet's Bitcoin Testnet faucet](https://coinfaucet.eu/en/btc-testnet/) for testing purposes. Once they have obtained test bitcoins, users can proceed to make a transaction to our designated deposit address. This transaction can be executed using any external source compatible with Bitcoin transactions.
+## 🤝 Contributing
 
-2. **Transaction Completion:**
-   - Once the transaction is completed, users obtain the transaction hash.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for workflow details.
 
-3. **Form Submission:**
-   - Users navigate back to the form on the first screen [https://panel.stabolut.com/purchase-with-btc](https://panel.stabolut.com/purchase-with-btc).
-   - Users enter the obtained transaction hash and their public wallet address into the designated form fields.
+---
 
-4. **Verification Process:**
-   - The system validates the provided transaction hash against the company's Bitcoin deposit address.
-   - If the transaction is found on the deposit address, the system retrieves the deposited amount.
+## 📄 License
 
-5. **Token Distribution:**
-   - Upon successful verification, the system credits the user's account with USB tokens corresponding to the deposited amount.
-
-### Verification Flow
-
-- The system checks the Bitcoin blockchain for transactions associated with the provided transaction hash.
-- If a transaction is found, the system verifies that it was sent to the company's designated deposit address.
-- Upon confirmation, the system credits the appropriate amount of USB tokens to the user's account.
-
-
-
-## Additional Information
-
-1. **Technology Stack:** This project is built using HTML, CSS, JavaScript, React.js, and Node.js.
-  2. **Dependencies:** Make sure to have Node.js and npm installed on your system to run the project.
-  3. **Testnet Usage:** Please note that both Ethereum and Bitcoin transactions should be conducted on their respective testnets to avoid using real funds.
-  4. **Deposit Addresses:** The deposit addresses provided for Ethereum and Bitcoin transactions are owned by our company.
-
-## Contact Us
-
-If you have any questions, suggestions, or feedback, feel free to reach out to us. We're here to help!
-
-- Email: [press@stabolut.com](mailto:press@stabolut.com)
-
-
-
-
-
-   
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
